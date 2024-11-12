@@ -1,0 +1,552 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+#canvas1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Ensure the canvas is behind other content */
+}
+
+  
+  
+  
+/* RESET STYLES */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  
+  /* BODY STYLES */
+  body {
+    font-family: 'Montserrat', sans-serif;
+    color: #FFFFFF; /* White text for contrast */
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-color: transparent; /* Allow the canvas background to show */
+  }
+  html, body {
+    height: auto;
+    min-height: 100%;
+  }
+  
+  
+  /* MAIN CONTAINER */
+  main {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 0 20px;
+  }
+  
+  /* HEADINGS */
+  h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: white;
+    display: inline-block;
+  }
+  
+  h3 {
+    font-size: 1.8em;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    position: relative;
+  }
+  
+  h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 50px;
+    height: 3px;
+  }
+  
+  /* PARAGRAPHS */
+  p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+  }
+  
+  /* SECTIONS */
+  section {
+    margin-bottom: 60px;
+  }
+  
+  /* LIST STYLES */
+  ul {
+    list-style: none;
+  }
+  
+  ul li {
+    font-size: 1em;
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 25px;
+  }
+  
+  ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    font-size: 1.5em;
+    line-height: 1;
+  }
+  
+  .skills ul li {
+    padding-left: 0;
+    margin-left: -15px;
+  }
+  
+  /* QUALIFICATIONS */
+  .qualifications {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+  
+  .qualification {
+    flex: 1;
+    min-width: 280px;
+  }
+  
+  .qualification h3 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+  }
+  
+  .qualification ul li {
+    font-size: 1em;
+    margin-bottom: 8px;
+    padding-left: 20px;
+  }
+  
+  .qualification ul li::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 8px;
+  }
+  
+  @media (max-width: 768px) {
+    main {
+      margin: 60px 20px;
+    }
+  
+    h2 {
+      font-size: 2em;
+    }
+  
+    h3 {
+      font-size: 1.5em;
+    }
+  
+    .qualifications {
+      flex-direction: column;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    h2 {
+      font-size: 1.8em;
+    }
+  
+    h3 {
+      font-size: 1.3em;
+    }
+  
+    p, ul li {
+      font-size: 1em;
+    }
+  }
+  
+
+/* Navbar Styles */
+/* Modern Navbar Styles */
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    padding: 10px 20px;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    backdrop-filter: blur(5px); /* Adds a blur effect for depth */
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+  }
+  
+  nav ul li {
+    margin: 0 15px;
+  }
+  
+  nav ul li a {
+    color:rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 1em;
+    padding: 8px 0;
+    transition: color 0.3s ease;
+    position: relative;
+  }
+  
+  nav ul li a::after {
+    content: '';
+    display: block;
+    width: 0%;
+    height: 2px;
+    background-color: white;
+    transition: width 0.3s ease;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  
+  nav ul li a:hover,
+  nav ul li a.active {
+    color: white;
+  }
+  
+  nav ul li a:hover::after,
+  nav ul li a.active::after {
+    width: 100%; /* Underline expands on hover/active */
+  }
+  
+  .nav-toggle {
+    display: none; /* Hidden on desktop */
+  }
+  
+  /* Mobile Styles */
+  @media (max-width: 768px) {
+    nav {
+      justify-content: space-between;
+    }
+  
+    .nav-toggle {
+      display: block;
+      cursor: pointer;
+    }
+  
+    .nav-toggle span,
+    .nav-toggle span::before,
+    .nav-toggle span::after {
+      display: block;
+      height: 3px;
+      width: 25px;
+      background-color: #fff;
+      margin: 5px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+  
+    .nav-toggle span::before,
+    .nav-toggle span::after {
+      content: '';
+      position: absolute;
+    }
+  
+    .nav-toggle span::before {
+      top: -10px;
+    }
+  
+    .nav-toggle span::after {
+      bottom: -10px;
+    }
+  
+    nav ul {
+      position: fixed;
+      top: 60px;
+      right: -100%;
+      height: calc(100% - 60px);
+      width: 200px;
+      background-color: rgba(0, 0, 0, 0.9);
+      flex-direction: column;
+      align-items: center;
+      transition: right 0.3s ease;
+    }
+  
+    nav ul li {
+      margin: 20px 0;
+    }
+  
+    nav.open ul {
+      right: 0;
+    }
+  
+    .nav-toggle.open span {
+      background-color: transparent;
+    }
+  
+    .nav-toggle.open span::before {
+      transform: rotate(45deg);
+      top: 0;
+    }
+  
+    .nav-toggle.open span::after {
+      transform: rotate(-45deg);
+      bottom: 0;
+    }
+  }
+  
+
+/* Title Styles */
+#title_index {
+    text-align: center;
+    font-size: 350%;
+    padding: 25px;
+    border-radius: 25px;
+    color: white;
+
+}
+
+/* Center the text-container horizontally */
+.text-container {
+    display: flex;
+    flex-direction: column; /* Ensure that text1 and text2 appear on separate lines */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Typing effect styles */
+#text1, #text2 {
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 1.5em;
+    display: block; /* Ensure spans behave as block elements */
+    color: white;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+}
+
+/* Other existing styles remain unchanged... */
+
+#index-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+
+}
+
+/* Image Container Styles */
+.image-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.image-container img {
+    width: 50px;
+    height: 50px;
+    opacity: 0; /* Start hidden */
+    border-radius: 15px;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.image-container img.fade-in {
+    opacity: 1; /* Images will fade in by changing opacity */
+}
+
+
+/*-------------------------------------------------------*/
+
+#contact-section {
+    padding: 20px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full viewport height */
+  }
+  
+  #contacts {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .contact-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distributes space between items */
+    margin-bottom: 20px; /* Space between each box */
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fff; /* Separate box background */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow for each item */
+    transition: background-color 0.3s ease;
+  }
+  
+  .contact-item:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .contact-item span {
+    margin-left: 10px;
+    font-size: 16px;
+    color: #333;
+    flex-grow: 1; /* Allows the span to take up available space */
+  }
+  
+  .contact-item img {
+    height: 30px;
+  }
+  
+  .copy-btn {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .copy-btn img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .copy-btn:hover{
+    background-color: #777;
+  }
+
+  /* ---------------------------------- */
+  /* Projects Section Styles */
+
+.projects-list {
+    list-style: none;
+    padding: 0;
+    margin: 40px auto;
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .project-item {
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    border-radius: 10px;
+    overflow: hidden;
+    width: calc(33.333% - 40px); /* Three items per row */
+    min-width: 280px;
+    max-width: 400px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .project-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .project-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .project-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+  
+  .project-container {
+    display: flex;
+    align-items: center; /* Optional: Aligns items vertically in the center */
+}
+
+.project-language {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+
+
+  
+  .project-description {
+    flex-grow: 1;
+    font-size: 1em;
+    color: #ccc;
+    margin-bottom: 20px;
+  }
+  
+  .project-links {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .project-links a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #ff6b6b;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .project-links a:hover {
+    color: #ff4c4c;
+  }
+  
+  .project-links img {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+  }
+  
+  /* Responsive Design */
+  
+  @media (max-width: 992px) {
+    .project-item {
+      width: calc(50% - 40px); /* Two items per row */
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .project-item {
+      width: 100%; /* One item per row */
+    }
+  
+    .project-content {
+      padding: 15px;
+    }
+  
+    .project-title {
+      font-size: 1.3em;
+    }
+  }
+  
+  #project-title {
+    text-align: center;
+    font-size: 250%;
+    padding: 25px;
+    border-radius: 25px;
+    color: white;
+
+}
+
+
